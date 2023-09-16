@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "FastHKU",
-    "version": "1.0",
+    "version": "1.1",
     "description": "one step to login hku application",
     "content_scripts": [
         {
