@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "FastHKU",
-    "version": "1.1",
+    "version": "1.2",
     "description": "one step to login hku application",
     "content_scripts": [
         {
@@ -17,6 +17,13 @@
                 "https://lib.hku.hk/hkulauth*"
             ],
             "js": ["scripts/lib_login.js"],
+            "run_at": "document_end"
+        },
+        {
+            "matches": [
+                "https://moodle.hku.hk/login/index.php"
+            ],
+            "js": ["scripts/moodle_goto_login.js"],
             "run_at": "document_end"
         }
     ],
