@@ -1,42 +1,39 @@
 {
-    "manifest_version": 3,
-    "name": "FastHKU",
-    "version": "1.2",
-    "description": "one step to login hku application",
-    "content_scripts": [
-        {
-            "matches": [
-                "https://hkuportal.hku.hk/cas/login*",
-                "https://hkuportal.hku.hk/login.html"
-            ],
-            "js": ["scripts/portal_login.js"],
-            "run_at": "document_end"
-        },
-        {
-            "matches": [
-                "https://lib.hku.hk/hkulauth*"
-            ],
-            "js": ["scripts/lib_login.js"],
-            "run_at": "document_end"
-        },
-        {
-            "matches": [
-                "https://moodle.hku.hk/login/index.php"
-            ],
-            "js": ["scripts/moodle_goto_login.js"],
-            "run_at": "document_end"
-        }
-    ],
-    "action": {
-        "default_popup": "popup/setting.html"
-
-      },
-    "permissions": [
-        "storage"
-    ],
-    "icons": {
-        "16": "images/icon16.png",
-        "48": "images/icon48.png",
-        "128": "images/icon128.png"
+  "manifest_version": 3,
+  "name": "FastHKU",
+  "version": "2.0",
+  "description": "One step to access HKU services",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://hkuportal.hku.hk/cas/login*",
+        "https://hkuportal.hku.hk/login.html"
+      ],
+      "js": ["scripts/portal_login.js"],
+      "run_at": "document_end"
+    },
+    {
+      "matches": ["https://lib.hku.hk/hkulauth*"],
+      "js": ["scripts/lib_login.js"],
+      "run_at": "document_end"
+    },
+    {
+      "matches": ["https://moodle.hku.hk/login/index.php"],
+      "js": ["scripts/moodle_goto_login.js"],
+      "run_at": "document_end"
     }
+  ],
+  "action": {
+    "default_popup": "popup/main.html"
+  },
+  "options_ui": {
+    "page": "popup/options.html",
+    "open_in_tab": false
+  },
+  "permissions": ["storage"],
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  }
 }

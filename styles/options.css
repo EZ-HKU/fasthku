@@ -39,5 +39,8 @@ input[type="button"] {
 
 
 body {
-    width: 20rem;
+    min-width: 20rem;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
