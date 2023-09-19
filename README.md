@@ -17,7 +17,7 @@ Unzip the downloaded file to a folder.
 Please refer to [google's document](https://developer.chrome.com/docs/extensions/mv3/getstarted/development-basics/#load-unpacked) for more information.
 
 # Usage
-1. Open the extension in browser
+1. Open the extension in browser, and click the `Set` button
 2. Enter your username and password (`All the information is stored locally`)
 3. Click the Save button
 4. That's it! Now you can use the extension to login to the websites in one step.
