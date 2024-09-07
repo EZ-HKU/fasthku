@@ -1,3 +1,3 @@
-let button = document.getElementsByClassName('btn btn-success')[1];
+let button = document.getElementsByClassName('btn login-identityprovider-btn btn-success')[0];
 
 button.click();
