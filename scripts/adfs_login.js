@@ -1,3 +1,5 @@
+window.fastHKUshowLoading();
+
 window.fastHKUTryLogin(function (data) {
     var userNameInput = document.getElementById("userNameInput")
     var passwordInput = document.getElementById("passwordInput")

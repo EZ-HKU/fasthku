@@ -1,3 +1,5 @@
+window.fastHKUshowLoading();
+
 function setTimeStamp() {
     time_object = new Date();
     time = "" + time_object.getFullYear() + time_object.getMonth() +

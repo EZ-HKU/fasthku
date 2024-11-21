@@ -7,6 +7,8 @@ try {
         {
         // user is not logged in
         // redirect to login page "https://moodle.hku.hk/login/index.php"
+        window.fastHKUshowLoading();
+
         document.location.href = "https://moodle.hku.hk/login/index.php";
 }
 } catch (error) {

@@ -93,5 +93,5 @@ window.fastHKUTryLogin = function (loginFunc) {
     });
 }
 
-showLoading();
+window.fastHKUshowLoading = showLoading;
 

@@ -1,3 +1,5 @@
+window.fastHKUshowLoading();
+
 window.fastHKUTryLogin(function (data) {
   var userid = document.getElementsByName("userid")[0];
   var password = document.getElementsByName("password")[0];

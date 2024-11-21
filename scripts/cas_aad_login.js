@@ -1,3 +1,5 @@
+window.fastHKUshowLoading();
+
 window.fastHKUTryLogin(function (data) {
     let email = data.username + "@connect.hku.hk";
     let emailInput = document.getElementById("email");
