@@ -1,5 +1,9 @@
-chrome.storage.sync.get(['username', 'password'], function (data) {
-    document.getElementById("userNameInput").value = data.username + "@connect.hku.hk";
-    document.getElementById("passwordInput").value = data.password;
-    document.getElementById("submitButton").click();
+window.fastHKUTryLogin(function (data) {
+    var userNameInput = document.getElementById("userNameInput")
+    var passwordInput = document.getElementById("passwordInput")
+    if (userNameInput && passwordInput) {
+        userNameInput.value = data.username + "@connect.hku.hk";
+        passwordInput.value = data.password;
+        document.getElementById("submitButton").click();
+    }
 });

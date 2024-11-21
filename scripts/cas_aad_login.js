@@ -1,6 +1,8 @@
-
-chrome.storage.sync.get(['username'], function (data) {
+window.fastHKUTryLogin(function (data) {
     let email = data.username + "@connect.hku.hk";
-    document.getElementById("email").value = email;
-    document.getElementById("login_btn").click();
+    let emailInput = document.getElementById("email");
+    if (emailInput) {
+        emailInput.value = email;
+        document.getElementById("login_btn").click();
+    }
 });
