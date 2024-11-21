@@ -18,43 +18,50 @@ chrome.storage.sync.get(['list', 'username', 'password'], function (items) {
     }
     
     let list = document.getElementById('linkList');
-    
-    
+    console.log(items);
     for (let i = 0; i < data_list.length; i++) {
         let div = document.createElement('div');
         div.classList.add('linkWithImage');
-        let img = document.createElement('img');
-        img.src = 'https://sis-eportal.hku.hk/favicon.ico';
-        img.alt = data_list[i].username;
-        img.width = 20;
-        img.height = 20;
-        img.style.marginRight = '10px';
-        div.appendChild(img);
-        let text = document.createTextNode(data_list[i].username);
-        div.appendChild(text);
+        let text = document.createTextNode('😄 '+data_list[i].username);
+        if (data_list[i].username === items.username) {
+            div.classList.add('active');
+            text = document.createTextNode('😀 '+data_list[i].username);
+            div.addEventListener('mouseover', function () {
+                text.nodeValue = '😵 '+data_list[i].username;
+            });
+            div.addEventListener('mouseout', function () {
+                text.nodeValue = '😀 '+data_list[i].username;
+            });
+        }
+        div.appendChild(text);        
         list.appendChild(div);
     }
+
     
     let linkWithImage = document.getElementsByClassName('linkWithImage');
+    let data_list_copy = data_list.slice();
     for (let i = 0; i < linkWithImage.length; i++) {
+        if (data_list[i].username === items.username) {
+            linkWithImage[i].addEventListener('click', function () {
+                data_list.splice(i, 1);
+                chrome.storage.sync.set({
+                    list: data_list
+                });
+                location.reload();
+            });
+            continue;
+        }
         linkWithImage[i].addEventListener('click', function () {
+            console.log(data_list_copy)
             // save data to storage
             chrome.storage.sync.set({
-                username: data_list[i].username,
-                password: data_list[i].password
+                username: data_list_copy[i].username,
+                password: data_list_copy[i].password
             });
 
-            // show notification
-            // clear body
-            document.body.innerHTML = '';
-            let div = document.createElement('h1');
-            div.innerHTML = 'Switch user to ' + data_list[i].username + '.';
-            document.body.appendChild(div);
-
-            // close
-            setTimeout(function () {
-                window.close();
-            }, 1000);
+            // reload page
+            location.reload();
         });
     }
+
 });

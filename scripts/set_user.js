@@ -37,12 +37,8 @@ var setUserData = function () {
       });
     }
 
-    // show notification
-    // clear body
-    document.body.innerHTML = "";
-    var div = document.createElement("h1");
-    div.innerHTML = "Saved user " + username + ".";
-    document.body.appendChild(div);
+    // get back to main page
+    location.href = chrome.runtime.getURL("popup/main.html");
   });
 
   // close
