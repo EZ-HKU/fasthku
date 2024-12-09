@@ -1,32 +1,95 @@
-function createLoadingOverlay() {
-    // 创建覆盖层
-    const overlay = document.createElement('div');
-    overlay.className = 'fastHKU-loading-overlay';
-    
-    // 创建加载容器
-    const container = document.createElement('div');
-    container.className = 'fastHKU-loading-container';
-    
-    // 创建文本
-    const text1 = document.createElement('div');
-    text1.textContent = 'FastHKU';
-    text1.className = 'fastHKU-title';
 
-    const text2 = document.createElement('div');
-    text2.textContent = 'Please waiting...';
-    text2.className = 'fastHKU-message';
-    
-    // 创建加载动画
-    const spinner = document.createElement('div');
-    spinner.className = 'fastHKU-spinner';
-    
-    // 组装元素
-    container.appendChild(text1);
-    container.appendChild(text2);
-    container.appendChild(spinner);
-    overlay.appendChild(container);
-    
-    return overlay;
+const addInnerElements = window.ezReact.addInnerElements;
+const addStyles = window.ezReact.addStyles;
+const addCustom = window.ezReact.addCustom;
+const createElement = window.ezReact.createElement;
+const Text = window.ezReact.Text;
+
+function Overlay(inner, custom) {
+    return createElement(inner, custom, () => {
+        // create overlay
+        let overlay = document.createElement('div');
+        overlay.className = 'fastHKU-loading-overlay';
+
+        // style overlay
+        overlay = addStyles(overlay, {
+            position: 'fixed',
+            top: '0',
+            left: '0',
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            backdropFilter: 'blur(5px)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            zIndex: '9999'
+        });
+
+        return overlay;
+    });
+}
+
+function Container(inner, custom) {
+    return createElement(inner, custom, () => {
+        // create container
+        let container = document.createElement('div');
+        container.className = 'fastHKU-loading-container';
+
+        // style container
+        container = addStyles(container, {
+            background: 'white',
+            padding: '20px',
+            borderRadius: '8px',
+            textAlign: 'center',
+            boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)'
+        });
+
+        return container;
+    });
+}
+
+function Spinner(inner, custom) {
+    return createElement(inner, custom, () => {
+        // create spinner
+        let spinner = document.createElement('div');
+        spinner.className = 'fastHKU-spinner';
+
+        // style spinner
+        spinner = addStyles(spinner, {
+            width: '40px',
+            height: '40px',
+            margin: '10px auto',
+            border: '4px solid #f3f3f3',
+            borderTop: '4px solid #3498db',
+            borderRadius: '50%',
+            animation: 'spin 1s linear infinite'
+        });
+        // animation "spin" should be defined in CSS !!!
+
+        return spinner;
+    });
+}
+
+function LoadingOverlay(inner, custom) {
+    // create overlay
+    return (
+        Overlay([
+            Container([
+                Text('FastHKU', {
+                    className: 'fastHKU-title',
+                }),
+                Text('Please waiting...', {
+                    className: 'fastHKU-message',
+                }),
+                Spinner()
+            ], null)
+        ], null)
+    );
+}
+
+function createLoadingOverlay() {
+    return LoadingOverlay(null, null);
 }
 
 function showLoading() {
